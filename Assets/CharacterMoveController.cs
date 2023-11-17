@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterMoveController : MonoBehaviour
 {
     [SerializeField] private float jumpHeight;
-    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float moveSpeed = 140f;
     private float _moveDir;
 
     private Rigidbody2D _rigidbody2D;
