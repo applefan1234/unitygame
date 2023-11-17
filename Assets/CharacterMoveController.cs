@@ -7,7 +7,7 @@ public class CharacterMoveController : MonoBehaviour
 {
     [SerializeField] private float jumpHeight;
     [SerializeField] private float moveSpeed = 140f;
-    private float _moveDir;
+    private float _moveDir = 1 ;
 
     private Rigidbody2D _rigidbody2D;
     private Vector3 _moveVel;
@@ -27,9 +27,14 @@ public class CharacterMoveController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        if (Input.GetButtonDown("Fire1")){
+            Debug.Log("button is pressed");
+        
+        }
+
     }
 
-  
+
 
     private void Move()
     {
@@ -41,8 +46,9 @@ public class CharacterMoveController : MonoBehaviour
 
     void GetInput()
     {
-        _moveDir = Input.GetAxisRaw("Vertical"); 
+        
     }
+
 
 
 }
