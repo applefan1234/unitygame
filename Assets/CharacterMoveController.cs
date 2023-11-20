@@ -11,6 +11,7 @@ public class CharacterMoveController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Vector3 _moveVel;
+    public float jumpAmount = 10;
 
 
 
@@ -21,6 +22,13 @@ public class CharacterMoveController : MonoBehaviour
 
     private void Update()
     {
+
+
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            _rigidbody2D.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+        }
         GetInput();
     }
 
@@ -48,7 +56,6 @@ public class CharacterMoveController : MonoBehaviour
     {
         
     }
-
 
 
 }
