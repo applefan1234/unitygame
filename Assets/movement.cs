@@ -1,3 +1,5 @@
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +13,6 @@ public class CharacterMoveController : MonoBehaviour
 
 
 
-    [SerializeField] private float jumpHeight;
     [SerializeField] private float moveSpeed = 140f;
     private float _moveDir = 1;
 
@@ -20,13 +21,15 @@ public class CharacterMoveController : MonoBehaviour
     public float jumpAmount = 10;
     public float gravityScale = 10;
     public float fallingGravityScale = 40;
+    public float dashForce = 200f;
+
     bool onground;
 
 
     void Move()
     {
         _moveVel = _rigidbody2D.velocity;
-        _moveVel.x = _moveDir * moveSpeed * Time.fixedDeltaTime;
+        _moveVel.x = _moveDir * moveSpeed;
         _rigidbody2D.velocity = _moveVel;
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,7 +68,9 @@ public class CharacterMoveController : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && onground == true)
         {
             _rigidbody2D.AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(Vector2.right * _moveDir * dashForce, ForceMode2D.Force);
             onground = false;
+
         }
         if (_rigidbody2D.velocity.y >= 0)
         {
@@ -78,7 +83,7 @@ public class CharacterMoveController : MonoBehaviour
         }
 
 
-        
+
 
 
 
