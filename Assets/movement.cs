@@ -5,6 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+
 
 public class CharacterMoveController : MonoBehaviour
 {
@@ -20,8 +23,8 @@ public class CharacterMoveController : MonoBehaviour
     private Vector3 _moveVel;
     public float jumpAmount = 10;
     public float gravityScale = 10;
-    public float fallingGravityScale = 40;
     public float dashForce = 200f;
+    public float fallingGravityScale = 40;
 
     bool onground;
 
@@ -39,6 +42,14 @@ public class CharacterMoveController : MonoBehaviour
         {
             onground = true;
         }
+
+        if (collision.gameObject.tag == "spike")
+        {
+            SceneManager.LoadScene("Assets/f platform.unity");
+
+
+        }
+
     }
 
 
@@ -55,7 +66,7 @@ public class CharacterMoveController : MonoBehaviour
         Move();
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("button is pressed");
+            //Debug.Log("button is pressed");
 
         }
 
@@ -63,6 +74,14 @@ public class CharacterMoveController : MonoBehaviour
 
     private void Update()
     {
+
+        if (transform.position.y < -20)
+        {
+            // Reload the scene
+            SceneManager.LoadScene("Assets/f platform.unity");
+        }
+
+
 
 
         if (Input.GetButtonDown("Fire1") && onground == true)

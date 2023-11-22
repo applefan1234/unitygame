@@ -340,8 +340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a99dd150151d1e418b3d4eb45c2b006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundPrefab: {fileID: 2479251812866327833, guid: 69aba6323b5d9ad44b02bd8a2c0234fc, type: 3}
+  groundPrefabs:
+  - {fileID: 2479251812866327833, guid: 69aba6323b5d9ad44b02bd8a2c0234fc, type: 3}
+  - {fileID: 3880345781445504289, guid: ed204346db507844d90b712b9b616a1d, type: 3}
   spawnInterval: 1.5
+  playerTransform: {fileID: 0}
 --- !u!4 &1140370402
 Transform:
   m_ObjectHideFlags: 0
@@ -423,8 +426,8 @@ MonoBehaviour:
   moveSpeed: 15
   jumpAmount: 100
   gravityScale: 50
-  fallingGravityScale: 20
   dashForce: 2400
+  fallingGravityScale: 20
 --- !u!61 &1918448071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -708,5 +711,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1918448074}
   - {fileID: 1140370402}
-  - {fileID: 1057968060}
   - {fileID: 1090084210}
+  - {fileID: 1057968060}

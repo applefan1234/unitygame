@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class GroundManager : MonoBehaviour
 {
-    public GameObject groundPrefab;
+    public GameObject[] groundPrefabs; // Array to hold different ground prefabs
     public float spawnInterval = 2f;
     private float nextSpawnTime = 0f;
-    private Transform playerTransform;
+    public Transform playerTransform;
 
     void Start()
     {
@@ -34,8 +34,14 @@ public class GroundManager : MonoBehaviour
 
     void SpawnGround()
     {
+        // Choose a random index for the groundPrefabs array
+        int randomIndex = Random.Range(0, groundPrefabs.Length);
+
+        // Get the selected prefab
+        GameObject selectedPrefab = groundPrefabs[randomIndex];
+
         // Spawn ground relative to the player's position
-        Vector2 spawnPosition = new Vector2(playerTransform.position.x+15, transform.position.y);
-        Instantiate(groundPrefab, spawnPosition, Quaternion.identity);
+        Vector2 spawnPosition = new Vector2(playerTransform.position.x + 15, transform.position.y);
+        Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
     }
 }
