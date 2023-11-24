@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ground
   - spike
+  - rotator
   layers:
   - Default
   - TransparentFX

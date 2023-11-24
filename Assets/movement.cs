@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -12,7 +13,7 @@ using UnityEngine.UIElements;
 public class CharacterMoveController : MonoBehaviour
 {
 
-
+  
 
 
 
@@ -25,11 +26,12 @@ public class CharacterMoveController : MonoBehaviour
     public float gravityScale = 10;
     public float dashForce = 200f;
     public float fallingGravityScale = 40;
-
+  
     bool onground;
 
 
-    void Move()
+
+        void Move()
     {
         _moveVel = _rigidbody2D.velocity;
         _moveVel.x = _moveDir * moveSpeed;
@@ -50,7 +52,16 @@ public class CharacterMoveController : MonoBehaviour
 
         }
 
+        if (collision.gameObject.tag == "rotator" )
+        {
+            Debug.Log("COLLED");
+            transform.Rotate(0, 0, 90);
+            onground = true;
+
+        }
+
     }
+
 
 
 
